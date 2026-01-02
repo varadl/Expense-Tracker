@@ -1,76 +1,127 @@
 * {
-  margin: 10px;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  background-image: url("backbg.jpg");
-  display: grid;
-  place-items: center;
-  height: 100vh; 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .container {
-  width: 400px;
-  height: 450px;
-  background: rgb(118, 131, 92);
-  margin: 100px auto;
-  padding: 20px;
-  border-radius: 50px;
+  width: 100%;
+  max-width: 450px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+  min-height: 280px;
+  transition: all 0.4s ease;
+}
+
+.container.expanded {
+  min-height: 540px;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 25px;
-  margin-top: 25px;
+  color: white;
+  margin-bottom: 15px;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
-input {
-  padding: 8px;
-  font-size: 16px;
+input, select, button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+.date-label {
+  font-size: 13px;
+  color: white;
 }
 
 button {
-  padding: 10px;
-  background: #284229;
+  background: #00c853;
   color: white;
-  border: rgb(219, 203, 203);
   cursor: pointer;
-}
-
-button:hover {
-  background: #45a049;
 }
 
 ul {
   list-style: none;
-  margin-top: 20px;
+  margin-top: 15px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.container.expanded ul {
+  max-height: 220px;
 }
 
 li {
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5px;
-  background: #eee;
-  padding: 8px;
-  border-radius: 5px;
+  align-items: center;
 }
 
-li button {
+li span {
+  font-size: 12px;
+  color: #555;
+}
+
+.actions button {
+  margin-left: 5px;
+  padding: 4px 6px;
+  font-size: 12px;
+}
+
+.edit {
+  background: orange;
+  color: white;
+}
+
+.delete {
   background: red;
-  padding: 8px 16px;
+  color: white;
 }
 
+h3 {
+  text-align: center;
+  margin-top: 10px;
+  color: white;
+}
 
+.chart-box {
+  margin-top: 15px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.container.expanded .chart-box {
+  max-height: 260px;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 18px;
+  }
+}
