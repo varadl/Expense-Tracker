@@ -43,5 +43,5 @@ However, the structure is intentionally designed so that **UPI expenses can be a
 
 ---
 
-## 📂 Project Structure
+
 
