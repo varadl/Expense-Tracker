@@ -3,27 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <title>Expense Tracker</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Saira+Stencil+One&display=swap" rel="stylesheet">
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Kenia&family=Roboto:ital,wght@0,100..900;1,100..900&family=Saira+Stencil+One&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="container">
-    <img src="C:\Users\Aditya\Desktop\Expense-Tracker\EXPENSE.jpg">
+    <h2> Expense </h2>
+    <h1>Tracker</h1>
 
-    <!-- Form -->
     <form id="expense-form">
-      <input type="text" id="title" placeholder="Expense title" required>
-      <input type="number" id="amount" placeholder="Amount" required>
-      <button type="submit">Add Expense</button>
+      <input type="text" id="title" placeholder="What did you spend on?" required>
+      <input type="number" id="amount" placeholder="Amount (₹)" required>
+
+      <!-- <select id="category" required>
+        <option value="">Where did you spend?</option>
+        <option>Food</option>
+        <option>Travel</option>
+        <option>Shopping</option>
+        <option>Bills</option>
+        <option>Other</option>
+      </select> -->
+
+      <!--  NEW: Payment Mode -->
+      <select id="payment-mode" required>
+        <option value="">Payment mode</option>
+        <option>Cash</option>
+        <option>UPI</option>
+        <option>Card</option>
+      </select>
+
+      <!-- <label class="date-label"> When did you spend this money?</label>
+      <input type="date" id="expense-date" required> -->
+
+      <button type="submit">Save Expense</button>
     </form>
 
-    <!-- Expense List -->
     <ul id="expense-list"></ul>
 
-    <!-- Total -->
-    <h3>Total: ₹ <span id="total">0</span></h3>
+    <h3>Total Spent: ₹ <span id="total">0</span></h3>
+    <!-- <div class="chart-box">
+      <canvas id="expenseChart"></canvas>
+    </div> -->
+    
   </div>
-   
+
   <script src="script.js"></script>
 </body>
 </html>

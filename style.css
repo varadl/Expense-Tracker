@@ -18,17 +18,42 @@ body {
 
 .container {
   width: 400px;
-  background: rgb(118, 131, 92);
-  margin: 100px auto;
+  background: rgb(109, 131, 84);
+  margin: 10px auto;
   padding: 20px;
   border-radius: 50px;
+  
+}
+/* .container .chart-box {
+  width: 100%;
+  max-width: 500px;
+  background-image: url("") ;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 20px auto;
+} */
+h2 {
+  font-size: 60px;
+  color: #225000;
+  text-decoration: underline;
+  text-align: center;
+  font-family: 'Saira Stencil One',bold;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
-h1 {
+h1{
+  font-size: 50px;
+  color: #9cbe07;
   text-align: center;
-  margin-bottom: 25px;
-  margin-top: 25px;
+
+  border-color: #000000;
+  margin-top: 0%;
+  font-family: 'kenia';
+  letter-spacing: 1px;
+  text-transform: lowercase;
 }
+
 
 form {
   display: flex;
@@ -42,9 +67,10 @@ input {
 }
 
 button {
-  padding: 10px;
-  background: #284229;
-  color: white;
+  padding: 20px;
+  background: #375939;
+  border-radius: 39px;
+  color: rgb(233, 233, 233);
   border: rgb(219, 203, 203);
   cursor: pointer;
 }
@@ -60,16 +86,17 @@ ul {
 
 li {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-  background: #eee;
-  padding: 8px;
-  border-radius: 5px;
+  justify-content:space-between;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+  background: #ebffa1;
+  padding: 2%;
+  border-radius: 15px;
 }
 
 li button {
   background: red;
-  padding: 8px 16px;
+  padding: 4px 16px;
 }
 
 
