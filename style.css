@@ -101,3 +101,33 @@ li {
   padding: 4px 16px;
 }
 
+#payment-mode {
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 3px solid #000000;
+  background-color: #cee4be;
+  cursor: pointer;
+}
+#payment-mode::placeholder{
+
+}
+
+#title,
+#amount {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 3px solid #000000;
+  background-color: #cee4be;
+  text-align: center;
+}
+
+#title::placeholder,
+#amount::placeholder {
+  color: #888;
+}
+
