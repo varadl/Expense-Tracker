@@ -1,100 +1,126 @@
 * {
-  margin: 10px;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Comfortaa', sans-serif;
 }
 
 body {
+  min-height: 100vh;
+  width: 100%;
   background-image: url("backbg.jpg");
-  display: grid;
-  place-items: center;
-  height: 100vh; 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-  width: 400px;
-  background: rgb(109, 131, 84);
-  margin: 10px auto;
-  padding: 20px;
-  border-radius: 50px;
-  
-}
-/* .container .chart-box {
   width: 100%;
-  max-width: 500px;
-  background-image: url("") ;
+  max-width: 420px;
+  background: rgb(109, 131, 84);
   padding: 20px;
-  border-radius: 20px;
-  margin: 20px auto;
-} */
-h2 {
-  font-size: 60px;
-  color: #225000;
-  text-decoration: underline;
-  text-align: center;
-  font-family: 'Saira Stencil One',bold;
-  letter-spacing: 4px;
-  text-transform: uppercase;
+  border-radius: 30px;
 }
 
-h1{
-  font-size: 50px;
+/* Headings */
+h2 {
+  font-size: 48px;
+  color: #225000;
+  text-align: center;
+  font-family: 'Saira Stencil One';
+}
+
+h1 {
+  font-size: 40px;
   color: #9cbe07;
   text-align: center;
-
-  border-color: #000000;
-  margin-top: 0%;
-  font-family: 'kenia';
-  letter-spacing: 1px;
-  text-transform: lowercase;
+  font-family: 'Kenia';
 }
 
-
+/* Form */
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
-input {
-  padding: 8px;
-  font-size: 16px;
+input, select {
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: none;
 }
 
+/* Buttons */
 button {
-  padding: 20px;
+  padding: 14px;
   background: #375939;
-  border-radius: 39px;
-  color: rgb(233, 233, 233);
-  border: rgb(219, 203, 203);
+  border-radius: 30px;
+  color: white;
   cursor: pointer;
+  border: none;
 }
 
 button:hover {
   background: #45a049;
 }
 
+/* Expense List */
 ul {
   list-style: none;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 li {
   display: flex;
-  justify-content:space-between;
-  margin-top: 2.5px;
-  margin-bottom: 2.5px;
+  justify-content: space-between;
   background: #ebffa1;
-  padding: 2%;
+  padding: 10px;
   border-radius: 15px;
+  margin-bottom: 6px;
 }
 
-li button {
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+.edit {
+  background: orange;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+.delete {
   background: red;
-  padding: 4px 16px;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+/* Empty State */
+.empty-msg {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #f1f1f1;
+}
+
+/* Total */
+h3 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* 📱 Mobile */
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    padding: 16px;
+  }
 }
