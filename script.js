@@ -1,7 +1,7 @@
 const form = document.getElementById("expense-form");
 const titleInput = document.getElementById("title");
 const amountInput = document.getElementById("amount");
-const categoryInput = document.getElementById("category");
+// const categoryInput = document.getElementById("category");
 const paymentModeInput = document.getElementById("payment-mode");
 const dateInput = document.getElementById("expense-date");
 const list = document.getElementById("expense-list");
@@ -13,7 +13,9 @@ let editId = null;
 let chart;
 
 // auto set today
-dateInput.value = new Date().toISOString().split("T")[0];
+date: new Date().toISOString().split("T")[0]
+
+
 
 render();
 
@@ -24,7 +26,7 @@ form.addEventListener("submit", e => {
     id: editId ?? Date.now(),
     title: titleInput.value,
     amount: Number(amountInput.value),
-    category: categoryInput.value,
+    // category: categoryInput.value,
     paymentMode: paymentModeInput.value,
     date: dateInput.value
   };
@@ -63,7 +65,7 @@ function render() {
     li.innerHTML = `
       <div>
         <strong>${e.title}</strong> - ₹${e.amount}<br>
-        <span>${e.category} | ${e.paymentMode} | ${formatDate(e.date)}</span>
+        <span> ${e.paymentMode} | ${formatDate(e.date)}</span>
       </div>
       <div class="actions">
         <button class="edit" onclick="editExpense(${e.id})">✏️</button>
@@ -86,7 +88,7 @@ function editExpense(id) {
   const e = expenses.find(x => x.id === id);
   titleInput.value = e.title;
   amountInput.value = e.amount;
-  categoryInput.value = e.category;
+  // categoryInput.value = e.category;
   paymentModeInput.value = e.paymentMode;
   dateInput.value = e.date;
   editId = id;

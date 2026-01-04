@@ -58,7 +58,7 @@ h1{
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 input {
@@ -70,8 +70,8 @@ button {
   padding: 20px;
   background: #375939;
   border-radius: 39px;
-  color: rgb(233, 233, 233);
-  border: rgb(219, 203, 203);
+  color: rgb(255, 255, 255);
+  border: rgb(2, 0, 0);
   cursor: pointer;
 }
 
@@ -81,7 +81,10 @@ button:hover {
 
 ul {
   list-style: none;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-style: oblique;
+  margin-left: 10px;
 }
 
 li {
@@ -97,4 +100,42 @@ li {
 li button {
   background: red;
   padding: 4px 16px;
+}
+
+#expense-date {
+  display: none;
+}
+
+#payment-mode{
+  width: 320px;
+  height: 37px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 3px solid #010101;
+  background-color: #21500070;
+  cursor: pointer;
+  font-size: larger;
+  text-align: center;
+}
+
+h3{
+  margin-left: 30px;
+  font-family:cursive;
+  color: #225000;
+}
+#title,
+#amount { 
+  width: 320px;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 3px solid #010600;
+  background-color: #2f5a077b;
+  text-align: center;
+}
+
+#title::placeholder,
+#amount::placeholder {
+  color: #ffffff;
+  font-size: larger;
 }
