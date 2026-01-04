@@ -4,34 +4,27 @@ const amountInput = document.getElementById("amount");
 const paymentModeInput = document.getElementById("payment-mode");
 const list = document.getElementById("expense-list");
 const totalDisplay = document.getElementById("total");
-const emptyMsg = document.getElementById("empty-msg");
-const submitBtn = document.getElementById("submit-btn");
+const container = document.querySelector(".container");
 
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 let editId = null;
 
 render();
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", e => {
   e.preventDefault();
-
-  // Validation
-  if (titleInput.value.trim() === "" || amountInput.value <= 0) {
-    alert("Please enter valid expense details");
-    return;
-  }
 
   const expense = {
     id: editId ?? Date.now(),
-    title: titleInput.value.trim(),
+    title: titleInput.value,
     amount: Number(amountInput.value),
-    paymentMode: paymentModeInput.value
+    paymentMode: paymentModeInput.value,
+    date: new Date().toISOString().split("T")[0]
   };
 
   if (editId) {
     expenses = expenses.map(e => e.id === editId ? expense : e);
     editId = null;
-    submitBtn.innerText = "Save Expense";
   } else {
     expenses.push(expense);
   }
@@ -49,18 +42,19 @@ function render() {
   list.innerHTML = "";
   let total = 0;
 
-  if (expenses.length === 0) {
-    emptyMsg.style.display = "block";
-  } else {
-    emptyMsg.style.display = "none";
-  }
+  expenses.length
+    ? container.classList.add("expanded")
+    : container.classList.remove("expanded");
 
   expenses.forEach(e => {
     total += e.amount;
 
     const li = document.createElement("li");
     li.innerHTML = `
-      <span>${e.title} - ₹${e.amount} (${e.paymentMode})</span>
+      <div>
+        <strong>${e.title}</strong> - ₹${e.amount}<br>
+        <span>${e.paymentMode} | ${formatDate(e.date)}</span>
+      </div>
       <div class="actions">
         <button class="edit" onclick="editExpense(${e.id})">✏️</button>
         <button class="delete" onclick="deleteExpense(${e.id})">❌</button>
@@ -78,12 +72,17 @@ function deleteExpense(id) {
 }
 
 function editExpense(id) {
-  const e = expenses.find(exp => exp.id === id);
-
+  const e = expenses.find(x => x.id === id);
   titleInput.value = e.title;
   amountInput.value = e.amount;
   paymentModeInput.value = e.paymentMode;
-
   editId = id;
-  submitBtn.innerText = "Update Expense";
+}
+
+function formatDate(date) {
+  return new Date(date).toLocaleDateString("en-IN", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  });
 }
