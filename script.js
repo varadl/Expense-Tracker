@@ -1,46 +1,43 @@
 const form = document.getElementById("expense-form");
 const titleInput = document.getElementById("title");
 const amountInput = document.getElementById("amount");
-// const categoryInput = document.getElementById("category");
 const paymentModeInput = document.getElementById("payment-mode");
-const dateInput = document.getElementById("expense-date");
 const list = document.getElementById("expense-list");
 const totalDisplay = document.getElementById("total");
-const container = document.querySelector(".container");
+const emptyMsg = document.getElementById("empty-msg");
+const submitBtn = document.getElementById("submit-btn");
 
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 let editId = null;
-let chart;
-
-// auto set today
-date: new Date().toISOString().split("T")[0]
-
-
 
 render();
 
-form.addEventListener("submit", e => {
+form.addEventListener("submit", function (e) {
   e.preventDefault();
+
+  // Validation
+  if (titleInput.value.trim() === "" || amountInput.value <= 0) {
+    alert("Please enter valid expense details");
+    return;
+  }
 
   const expense = {
     id: editId ?? Date.now(),
-    title: titleInput.value,
+    title: titleInput.value.trim(),
     amount: Number(amountInput.value),
-    // category: categoryInput.value,
-    paymentMode: paymentModeInput.value,
-    date: dateInput.value
+    paymentMode: paymentModeInput.value
   };
 
   if (editId) {
     expenses = expenses.map(e => e.id === editId ? expense : e);
     editId = null;
+    submitBtn.innerText = "Save Expense";
   } else {
     expenses.push(expense);
   }
 
   save();
   form.reset();
-  dateInput.value = new Date().toISOString().split("T")[0];
 });
 
 function save() {
@@ -52,10 +49,10 @@ function render() {
   list.innerHTML = "";
   let total = 0;
 
-  if (expenses.length > 0) {
-    container.classList.add("expanded");
+  if (expenses.length === 0) {
+    emptyMsg.style.display = "block";
   } else {
-    container.classList.remove("expanded");
+    emptyMsg.style.display = "none";
   }
 
   expenses.forEach(e => {
@@ -63,10 +60,7 @@ function render() {
 
     const li = document.createElement("li");
     li.innerHTML = `
-      <div>
-        <strong>${e.title}</strong> - ₹${e.amount}<br>
-        <span> ${e.paymentMode} | ${formatDate(e.date)}</span>
-      </div>
+      <span>${e.title} - ₹${e.amount} (${e.paymentMode})</span>
       <div class="actions">
         <button class="edit" onclick="editExpense(${e.id})">✏️</button>
         <button class="delete" onclick="deleteExpense(${e.id})">❌</button>
@@ -76,7 +70,6 @@ function render() {
   });
 
   totalDisplay.innerText = total;
-  updateChart();
 }
 
 function deleteExpense(id) {
@@ -85,47 +78,12 @@ function deleteExpense(id) {
 }
 
 function editExpense(id) {
-  const e = expenses.find(x => x.id === id);
+  const e = expenses.find(exp => exp.id === id);
+
   titleInput.value = e.title;
   amountInput.value = e.amount;
-  // categoryInput.value = e.category;
   paymentModeInput.value = e.paymentMode;
-  dateInput.value = e.date;
+
   editId = id;
-}
-
-function updateChart() {
-  if (expenses.length === 0) return;
-
-  const data = {};
-  expenses.forEach(e => {
-    data[e.category] = (data[e.category] || 0) + e.amount;
-  });
-
-  if (chart) chart.destroy();
-
-  chart = new Chart(document.getElementById("expenseChart"), {
-    type: "pie",
-    data: {
-      labels: Object.keys(data),
-      datasets: [{
-        data: Object.values(data),
-        backgroundColor: [
-          "#ff6384",
-          "#36a2eb",
-          "#ffcd56",
-          "#4caf50",
-          "#9c27b0"
-        ]
-      }]
-    }
-  });
-}
-
-function formatDate(date) {
-  return new Date(date).toLocaleDateString("en-IN", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric"
-  });
+  submitBtn.innerText = "Update Expense";
 }

@@ -48,7 +48,8 @@ form {
   gap: 15px;
 }
 
-input, select {
+input,
+select {
   padding: 12px;
   font-size: 15px;
   border-radius: 10px;
@@ -61,7 +62,6 @@ button {
   background: #375939;
   border-radius: 39px;
   color: rgb(233, 233, 233);
-  border: rgb(219, 203, 203);
   cursor: pointer;
   border: none;
 }
@@ -99,4 +99,28 @@ li {
 .delete {
   background: red;
   padding: 4px 16px;
+}
+
+/* Empty State */
+.empty-msg {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #f1f1f1;
+}
+
+/* Total */
+h3 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* 📱 Mobile */
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    padding: 16px;
+  }
 }
