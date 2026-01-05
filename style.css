@@ -18,125 +18,172 @@ body {
   align-items: center;
 }
 
+/* Main Card */
 .container {
   width: 100%;
   max-width: 420px;
-  background: rgb(109, 131, 84);
+  background: rgba(109, 131, 84, 0.95);
   padding: 20px;
   border-radius: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
 /* Headings */
 h2 {
-  font-size: 48px;
+  font-size: 42px;
   color: #225000;
   text-align: center;
   font-family: 'Saira Stencil One';
 }
 
 h1 {
-  font-size: 40px;
-  color: #9cbe07;
+  font-size: 36px;
+  color: #e9ff70;
   text-align: center;
   font-family: 'Kenia';
+  margin-bottom: 10px;
 }
 
 /* Form */
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 14px;
+  margin-top: 10px;
 }
 
-input, select {
+input,
+select {
   padding: 12px;
   font-size: 15px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
+  background-color: #cee4be;
+  text-align: center;
 }
 
-/* Buttons */
+/* Button */
 button {
   padding: 14px;
   background: #375939;
-  border-radius: 39px;
-  color: rgb(233, 233, 233);
+  border-radius: 30px;
+  color: #fff;
   cursor: pointer;
   border: none;
+  font-size: 16px;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 button:hover {
   background: #45a049;
+  transform: scale(1.03);
 }
 
 /* Expense List */
 ul {
   list-style: none;
-  margin-top: 20px;
+  margin-top: 15px;
+  max-height: 260px;
+  overflow-y: auto;
 }
 
 li {
   display: flex;
   justify-content: space-between;
-  background: #ebffa1;
+  gap: 10px;
+  background: #c1c8a7;
   padding: 10px;
   border-radius: 15px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 
+li small {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Action Buttons */
 .actions {
   display: flex;
-  gap: 6px;
+  gap: 8px;
+  align-items: center;
 }
 
+/* Edit button */
 .edit {
-  background: orange;
-  padding: 6px 10px;
-  border-radius: 10px;
+  background: #dfd9cc;
+  color: #333;
   border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 14px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
+.edit:hover {
+  background: #ffbe0b;
+  transform: scale(1.1);
+}
+
+/* Delete button */
 .delete {
-  background: red;
-  padding: 4px 16px;
-  border-radius: 10px;
+  background: #ead8d8;
+  color: #fff;
   border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 14px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-/* Inputs */
-#payment-mode {
+.delete:hover {
+  background: #e63946;
+  transform: scale(1.1);
+}
+
+/* Total */
+h3 {
   text-align: center;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 10px;
-  border: none;                  /* removed black border */
-  background-color: #cee4be;
-  cursor: pointer;
+  margin-top: 10px;
+  color: #fff;
 }
 
-#title,
-#amount {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 12px;
-  border: none;                  /* removed black border */
-  background-color: #cee4be;
-  text-align: center;
-}
-
-#title::placeholder,
-#amount::placeholder {
-  color: #000000;
-}
-
-/* Remove focus outline */
+/* Remove Focus Outline */
 input:focus,
 select:focus,
 button:focus {
   outline: none;
-  box-shadow: none;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  .container {
+    border-radius: 0;
+    min-height: 100vh;
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
 }

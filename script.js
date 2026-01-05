@@ -4,7 +4,6 @@ const amountInput = document.getElementById("amount");
 const paymentModeInput = document.getElementById("payment-mode");
 const list = document.getElementById("expense-list");
 const totalDisplay = document.getElementById("total");
-const container = document.querySelector(".container");
 
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 let editId = null;
@@ -14,16 +13,21 @@ render();
 form.addEventListener("submit", e => {
   e.preventDefault();
 
+  if (!titleInput.value.trim() || amountInput.value <= 0) {
+    alert("Please enter valid expense details");
+    return;
+  }
+
   const expense = {
     id: editId ?? Date.now(),
-    title: titleInput.value,
+    title: titleInput.value.trim(),
     amount: Number(amountInput.value),
     paymentMode: paymentModeInput.value,
     date: new Date().toISOString().split("T")[0]
   };
 
   if (editId) {
-    expenses = expenses.map(e => e.id === editId ? expense : e);
+    expenses = expenses.map(x => x.id === editId ? expense : x);
     editId = null;
   } else {
     expenses.push(expense);
@@ -42,18 +46,14 @@ function render() {
   list.innerHTML = "";
   let total = 0;
 
-  expenses.length
-    ? container.classList.add("expanded")
-    : container.classList.remove("expanded");
-
   expenses.forEach(e => {
     total += e.amount;
 
     const li = document.createElement("li");
     li.innerHTML = `
       <div>
-        <strong>${e.title}</strong> - ₹${e.amount}<br>
-        <span>${e.paymentMode} | ${formatDate(e.date)}</span>
+        <strong>${e.title}</strong> - ₹${e.amount.toLocaleString("en-IN")}<br>
+        <small>${e.paymentMode} • ${formatDate(e.date)}</small>
       </div>
       <div class="actions">
         <button class="edit" onclick="editExpense(${e.id})">✏️</button>
@@ -63,7 +63,7 @@ function render() {
     list.appendChild(li);
   });
 
-  totalDisplay.innerText = total;
+  totalDisplay.innerText = total.toLocaleString("en-IN");
 }
 
 function deleteExpense(id) {
