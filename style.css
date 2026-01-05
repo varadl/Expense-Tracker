@@ -61,7 +61,6 @@ button {
   background: #375939;
   border-radius: 39px;
   color: rgb(233, 233, 233);
-  border: rgb(219, 203, 203);
   cursor: pointer;
   border: none;
 }
@@ -94,24 +93,29 @@ li {
   background: orange;
   padding: 6px 10px;
   border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
 
 .delete {
   background: red;
   padding: 4px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
 
+/* Inputs */
 #payment-mode {
   text-align: center;
   width: 100%;
   padding: 10px;
   font-size: 16px;
   border-radius: 10px;
-  border: 3px solid #000000;
+  border: none;                  /* removed black border */
   background-color: #cee4be;
   cursor: pointer;
 }
-
 
 #title,
 #amount {
@@ -119,7 +123,7 @@ li {
   padding: 12px;
   font-size: 16px;
   border-radius: 12px;
-  border: 3px solid #000000;
+  border: none;                  /* removed black border */
   background-color: #cee4be;
   text-align: center;
 }
@@ -127,4 +131,12 @@ li {
 #title::placeholder,
 #amount::placeholder {
   color: #000000;
+}
+
+/* Remove focus outline */
+input:focus,
+select:focus,
+button:focus {
+  outline: none;
+  box-shadow: none;
 }
