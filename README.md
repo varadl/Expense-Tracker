@@ -73,8 +73,3 @@ This logic is included **for learning and system-design understanding only**.
 - Backend integration (conceptual)
 
 ---
-
-## 👨‍💻 Author
-
-Built by **Varad Lokhande**  
-Computer Engineering Student | Frontend Practice Project
